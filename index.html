@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>資三甲體溫回報</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+        <form>
+            <label for="date">日期（格式範例：20210520）</label><br>
+            <label for="text">*補上傳專用，如要上傳今日體溫，該欄位不用填寫</label><br>
+            <input type="text" name="date" id="date" oninput="value=value.replace(/[^\d]/g,'')"><br>
+            <label for="userId">座號</label><br>
+            <input type="text" name="userId" id="userId" oninput="value=value.replace(/[^\d]/g,'')"><br>
+            <label for="Temperature">體溫</label><br>
+            <input type="text" name="temperature" id ="temperature" oninput="value=value.replace(/[^\-?\d.]/g,'')"><br>
+            <button id="addBtn" type = "button" class="btn waves-effect waves-light" onclick="uploadData()">上傳體溫</button>
+            <button id="updateBtn" type = "button" class="btn waves-effect red darken-1" onclick="getRecords()">查看紀錄</button>
+            <button id="outputBtn" type = "button" class="btn waves-effect blue lighten-1" style="display : none" >輸出全班紀錄</button>
+            <div class = "div1" id = "div1">
+                <table id = "headerTable">
+                    <thead>
+                      <tr>
+                          <th>日期</th>
+                          <th>體溫</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+            </div>
+        </form>
+    </main>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+    <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+    <script src="main.js"></script>
+</body>
+</html>
